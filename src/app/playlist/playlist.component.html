@@ -1,0 +1,26 @@
+<mat-card style="margin-bottom: 20px;">
+  <h2>Create a playlist</h2>
+
+  <form #idform="ngForm">
+    <mat-form-field>
+      <input matInput ngModel name="nom" placeholder="Name">
+    </mat-form-field>
+
+    <p></p>
+    <input (click)="createPlaylist(idform.value.nom)" type="submit" [disabled]="!idform.valid" value="Save changes">
+  </form>
+
+</mat-card>
+
+<mat-grid-list cols="3">
+  <mat-grid-tile *ngFor="let item of playlists">
+    <a [routerLink]="['/playlist' , item.id]">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{item.name}}</mat-card-title>
+        </mat-card-header>
+        <img *ngIf="item.images!=0" src="{{item.images[0].url}}" width="200" height="200">
+      </mat-card>
+    </a>
+  </mat-grid-tile>
+</mat-grid-list>

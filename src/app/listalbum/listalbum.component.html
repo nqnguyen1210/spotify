@@ -1,0 +1,20 @@
+
+<mat-card>
+  <h2>Recherche d'albums</h2>
+  Mot clé*
+  <form #idform="ngForm">
+    <input matInput ngModel name="nom" required>
+    <input (click)="chercherAlbum(idform.value.nom)" type="submit" [disabled]="!idform.valid" value="Valider">
+  </form>
+</mat-card>
+
+  <mat-grid-list cols="3">
+    <mat-grid-tile *ngFor="let item of albums">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{item.name}}</mat-card-title>
+        </mat-card-header>
+        <a [routerLink]="['/album' , item.id]"><img src="{{item.images[0].url}}" width="200" height="200"></a>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>

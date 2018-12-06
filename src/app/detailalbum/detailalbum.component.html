@@ -1,0 +1,13 @@
+
+<mat-card-header style="margin-top:20px;">
+  <mat-card-title style="font-weight:bold; font-size:20px;">{{album.name}}</mat-card-title>
+</mat-card-header>
+<img *ngIf="album.images!=0" src="{{album.images[0].url}}" width="200" height="200">
+
+<mat-card *ngFor="let item of tracks">
+  <mat-card-header>
+    <mat-card-title>{{item.track_number}}- {{item.name}} ({{item.duration_ms*1/60000 | number:'1.1-2'}} mn)</mat-card-title>
+    <audio *ngIf="item.preview_url!=0" id=”AudioSong” controls src="{{item.preview_url}}"></audio>
+    <button style="margin-left:10px;"><mat-icon>add_box</mat-icon>Add to playlist</button>
+</mat-card-header>
+</mat-card>

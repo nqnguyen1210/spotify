@@ -1,0 +1,11 @@
+a {
+  text-decoration: none;
+}
+
+mat-card-title {
+  font-weight: bold;
+}
+
+  mat-card-title:hover {
+    color: lightcoral;
+  }
